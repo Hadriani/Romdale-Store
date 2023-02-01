@@ -1,0 +1,61 @@
+{
+  "name": "branded-products",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@chec/commerce.js": "^2.8.0",
+    "@headlessui/react": "^1.7.7",
+    "@heroicons/react": "^2.0.13",
+    "@iconify/icons-heroicons-outline": "^1.2.5",
+    "@iconify/react": "^4.0.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "eslint": "8.29.0",
+    "eslint-config-next": "13.0.6",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "firebase": "^9.15.0",
+    "flickity": "^3.0.0",
+    "localstorage": "^1.0.1",
+    "next": "^13.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "react-router-dom": "^6.4.5",
+    "react-scripts": "5.0.1",
+    "reactstrap": "^9.1.5",
+    "semantic-ui-react": "^2.1.4",
+    "svg-inline-loader": "^0.8.2",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.75.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
