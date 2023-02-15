@@ -1,33 +1,30 @@
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../../components/Contexts/cart.context";
-import { CartProvider } from "../../../components/Contexts/cart.context";
+import React from 'react';
+import Layout from '../../../components/Layout/layoutcaps';
+import HATS_MAP from '../../../hats-data';
+import Link from 'next/link';
+import Image from 'next/image';
+import styles from '../../../styles/collections.module.css';
 
-import Link from "next/link";
-import styles from "../../../styles/collections.module.css";
-import HATS_MAP from "../../../hats-data";
+import { useState, useContext, useEffect } from 'react';
+import { CartContext } from '../../../components/Contexts/cart.context';
 
-import React from "react";
-import Image from "next/image";
+import Router from 'next/router';
+import SmallHeader from '../../../components/Layout/locator';
+import SortBar2 from '../../../components/Layout/sortby-secondary';
 
-import { useState } from "react";
-
-import Router from "next/router";
-
-import CollectionsHeader from "../../../components/Layout/collectionslocator";
-import SortBar from "../../../components/Layout/sortby-mainindex";
 import { SlArrowUp } from "react-icons/sl"
 import { SlArrowDown } from "react-icons/sl"
 
 
-function Hats() {
+
+function CowboyPage(props) {
+
     const [showButton, setShowButton] = useState(null);
-    const [sortedItems, setSortedItems] = useState([...HATS_MAP]);
-    const [currentPage, setCurrentPage] = useState(0);
     const { cartCount } = useContext(CartContext);
     const [showCartCount, setShowCartCount] = useState("");
-    const [arrowDirection, setArrowDirection] = useState("up")
-    const [arrowDirection2, setArrowDirection2] = useState("up")
-    
+    const [arrowDirection, setArrowDirection] = useState("up");
+    const [arrowDirection2, setArrowDirection2] = useState("up");
+
     function handleSelectChange(event) {
         Router.push(`/collections/hats/${event.target.value}`)
     }
@@ -50,19 +47,7 @@ function Hats() {
         }
     }
 
-    const numOfPages = Math.ceil(sortedItems.length / 8)
-
-    const handleSort = (newSortedItems) => {
-        setSortedItems(newSortedItems);
-        setCurrentPage(0);
-    }
-
-    const handleNextClick = () => {
-        setCurrentPage((currentPage + 1) % numOfPages);
-    };
-
-    const hatsToDisplay = sortedItems.slice(currentPage * 8, (currentPage + 1) * 8);
-
+    const COWBOY_MAP = HATS_MAP.filter(item => item.category === 'Cowboy Hats');
 
     const { addItemToCart } = useContext(CartContext);
 
@@ -84,7 +69,6 @@ function Hats() {
     }, [cartCount]);
 
     return (
-        <CartProvider>
         <div>
             <div className={styles.navigationheader}>
                 <nav className={styles.nav}>
@@ -160,27 +144,27 @@ function Hats() {
                                         <path d="M17 17h-11v-14h-2" />
                                         <path d="M6 5l14 1l-1 7h-13" />
                                     </svg>
-                                        <div className={styles.cartwrapper}>
-                                            <i className={`${styles.fa} ${styles.fas}`}>
-                                                {showCartCount}
-                                            </i>
-                                        </div>
+                                    <div className={styles.cartwrapper}>
+                                        <i className={`${styles.fa} ${styles.fas}`}>
+                                            {showCartCount}
+                                        </i>
+                                    </div>
                                 </Link>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            
-            <CollectionsHeader />
+
+            <SmallHeader />
             <div className={styles.searchhatcontainer2}>
-                <h1 className={styles.headertoolbar}>HEADWEAR</h1>
+                <h1 className={styles.headercaps}>COWBOY HATS</h1>
                 <span className={styles.toolbar}>
-                    <SortBar onSort={handleSort} />
+                    <SortBar2 />
                 </span>
             </div>
 
-            <div className={styles.sidebar} >
+            <div className={styles.sidebar}>
                 <h2>Shop by Category</h2>
                 <div className={styles.selectContainer}>
                     <select className={styles.selectbar} onChange={handleSelectChange} onClick={toggleArrow}>
@@ -209,13 +193,13 @@ function Hats() {
                     </div>
                 </div>
             </div>
-        
+
             <div className={styles.hatscaffoldingcontainer}>
-                {hatsToDisplay.map(({ id, name, imageUrl, price, cartButton, favoriteButton }) => (
+                {COWBOY_MAP.map(({ id, name, imageUrl, price, cartButton, favoriteButton }) => (
                     <div key={id} className={styles.hatitemcontainer}
                         onMouseOver={() => setShowButton(id)}
                         onMouseOut={() => setShowButton(null)}>
-                        {showButton === id && <button className={styles.favoriteHatbutton} 
+                        {showButton === id && <button className={styles.favoriteHatbutton}
                             onClick={() => handleAddToWish({ id, name, imageUrl, price })}>{favoriteButton}
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="#ff0000" stroke-linecap="round" stroke-linejoin="round">
                                 <title>Add To Favorites</title>
@@ -224,7 +208,7 @@ function Hats() {
                             </svg>
                         </button>}
                         <div style={{ textAlign: 'center' }}>
-                            <Link href="/collections/hats/[id]" as={`/collections/hats/${id}`}>
+                            <Link href="/collections/hats/[id.hats]" as={`/collections/hats/${id}`}>
                                 <Image className={styles.hatimage}
                                     src={imageUrl}
                                     alt={name}
@@ -242,16 +226,9 @@ function Hats() {
                             currency: 'USD',
                         })}</p>
                     </div>
-                ))}    
+                ))}
+                <div className={styles.blankhatcontainer}></div>
             </div>
-       
-            <div className={styles.blankhatcontainer}>
-                <div className={styles.nextbuttoncontainer}>
-                    <button onClick={handleNextClick} className={styles.nextpagebutton}>Next</button>
-                    <p className={styles.paranextbutton}>page {currentPage + 1} of {numOfPages}</p>
-                </div>
-            </div>
-            
             <footer className={styles.footer} >
                 <div className={styles.contactfooter}>
                     <h1 className={styles.h1footer}>CONTACT</h1>
@@ -288,10 +265,7 @@ function Hats() {
                 </div>
             </footer>
         </div>
-        </CartProvider>
-    )
-};
+    );
+}
 
-
-export default Hats;
-
+export default CowboyPage;

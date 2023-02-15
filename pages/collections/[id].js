@@ -1,90 +1,73 @@
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../../components/Contexts/cart.context";
-import { CartProvider } from "../../../components/Contexts/cart.context";
-
-import Link from "next/link";
+import HATS_MAP from '../../../hats-data';
+import Image from 'next/image';
 import styles from "../../../styles/collections.module.css";
-import HATS_MAP from "../../../hats-data";
+import Link from 'next/link';
+import { TbHeart } from 'react-icons/tb';
 
-import React from "react";
-import Image from "next/image";
+import { useState, useContext, useEffect } from 'react';
+import { CartContext } from '../../../components/Contexts/cart.context';
 
-import { useState } from "react";
-
-import Router from "next/router";
-
-import CollectionsHeader from "../../../components/Layout/collectionslocator";
-import SortBar from "../../../components/Layout/sortby-mainindex";
-import { SlArrowUp } from "react-icons/sl"
-import { SlArrowDown } from "react-icons/sl"
+import { AiOutlineStar } from 'react-icons/ai';
+import ClothingHome from '../../itemhomelist';
+import Contact from '../../../components/Firebase/contact-form.component';
 
 
-function Hats() {
-    const [showButton, setShowButton] = useState(null);
-    const [sortedItems, setSortedItems] = useState([...HATS_MAP]);
-    const [currentPage, setCurrentPage] = useState(0);
+export async function getStaticPaths() {
+
+    const paths = Object.keys(HATS_MAP).map(id => ({
+        params: { id },
+    }));
+
+    return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+    const item = HATS_MAP[params.id];
+
+    return { props: { item } };
+}
+
+export default function Hat({ item }) {
     const { cartCount } = useContext(CartContext);
     const [showCartCount, setShowCartCount] = useState("");
-    const [arrowDirection, setArrowDirection] = useState("up")
-    const [arrowDirection2, setArrowDirection2] = useState("up")
-    
-    function handleSelectChange(event) {
-        Router.push(`/collections/hats/${event.target.value}`)
-    }
-    function handleSelectChange2(event) {
-        Router.push(`/collections/hats/PriceRangeHats/${event.target.value}`)
+    const [rating, setRating] = useState(0);
+
+    const handleStarClick = (e) => {
+        const selectedRating = e.target.dataset.index;
+        setRating(selectedRating);
     }
 
-    function toggleArrow() {
-        if (arrowDirection === 'up') {
-            setArrowDirection("down")
-        } else {
-            setArrowDirection("up")
+    const renderStars = () => {
+        let stars = [];
+        for (let i = 0; i < 5; i++) {
+            if (i < rating) {
+                stars.push(<AiOutlineStar key={i} className="gold" data-index={i + 1} onClick={handleStarClick} />);
+            } else {
+                stars.push(<AiOutlineStar key={i} data-index={i + 1} onClick={handleStarClick} />);
+            }
         }
+        return stars;
     }
-    function toggleArrow2() {
-        if (arrowDirection2 === 'up') {
-            setArrowDirection2("down")
-        } else {
-            setArrowDirection2("up")
-        }
-    }
-
-    const numOfPages = Math.ceil(sortedItems.length / 8)
-
-    const handleSort = (newSortedItems) => {
-        setSortedItems(newSortedItems);
-        setCurrentPage(0);
-    }
-
-    const handleNextClick = () => {
-        setCurrentPage((currentPage + 1) % numOfPages);
-    };
-
-    const hatsToDisplay = sortedItems.slice(currentPage * 8, (currentPage + 1) * 8);
-
 
     const { addItemToCart } = useContext(CartContext);
-
-    const handleAddToCart = (item) => {
-        addItemToCart(item);
+    const handleAddToCart = (props) => {
+        addItemToCart(props.item);
     }
 
     const { addItemToWishlist } = useContext(CartContext);
-    const handleAddToWish = (item) => {
-        addItemToWishlist(item);
+    const handleAddToWish = (props) => {
+        addItemToWishlist(props.item);
     }
 
     useEffect(() => {
         if (cartCount > 0) {
-            setShowCartCount(cartCount); // update state with cartCount
+            setShowCartCount(cartCount); 
         } else {
-            setShowCartCount(""); // reset state to empty string
+            setShowCartCount("");
         }
     }, [cartCount]);
 
     return (
-        <CartProvider>
         <div>
             <div className={styles.navigationheader}>
                 <nav className={styles.nav}>
@@ -160,98 +143,136 @@ function Hats() {
                                         <path d="M17 17h-11v-14h-2" />
                                         <path d="M6 5l14 1l-1 7h-13" />
                                     </svg>
-                                        <div className={styles.cartwrapper}>
-                                            <i className={`${styles.fa} ${styles.fas}`}>
-                                                {showCartCount}
-                                            </i>
-                                        </div>
+                                    <div className={styles.cartwrapper}>
+                                        <i className={`${styles.fa} ${styles.fas}`}>
+                                            {showCartCount}
+                                        </i>
+                                    </div>
                                 </Link>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            
-            <CollectionsHeader />
-            <div className={styles.searchhatcontainer2}>
-                <h1 className={styles.headertoolbar}>HEADWEAR</h1>
-                <span className={styles.toolbar}>
-                    <SortBar onSort={handleSort} />
-                </span>
+
+            <div className={styles.idcontent}>
+                <div className={styles.headeritem}>
+                    <h2 className={styles.headertextid}>{item.name}</h2>
+                        <div className={styles.reviewstars}>
+                            <>{renderStars()} </>
+                        </div>
+                    <p className={styles.pricetextid}>{item.price.toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                    })}</p>
+                    <hr className={styles.hrid} />
+                    <div className={styles.idfavcart}>
+                        <TbHeart onClick={() => handleAddToWish({ item })} className={styles.biheartid}/>
+                        <button className={styles.idHatButton} onClick={() => handleAddToCart({ item })}>ADD TO CART</button>
+                    </div>
+                    <div className={styles.iddescription} >
+                        <p className={styles.iditemtext}>{item.description}</p>
+                    </div>
+                </div>
+                <div className={styles.imagedetail}>
+                    <Image src={item.imageUrl} alt={item.name} width="500" height="500" className={styles.imageid}/>
+                </div>
             </div>
 
-            <div className={styles.sidebar} >
-                <h2>Shop by Category</h2>
-                <div className={styles.selectContainer}>
-                    <select className={styles.selectbar} onChange={handleSelectChange} onClick={toggleArrow}>
-                        <option value="all">All</option>
-                        <option value="caps">Caps</option>
-                        <option value="beanie">Beanie</option>
-                        <option value="cowboy-hats">Cowboy Hats</option>
-                        <option value="fisherman-cap">Fisherman Cap</option>
-                        <option value="winter-hats">Winter Hats</option>
-                        <option value="children-winter-hats">Children Winter Hats</option>
-                        <option value="golf-hats">Golf Hats</option>
-                        <option value="beret-hats">Beret Hats</option>
-                    </select>
-                    {arrowDirection === 'up' ? <SlArrowUp className={styles.arrow} /> : <SlArrowDown className={styles.arrow} />}
+            <div className={styles.blankhatcontainer}></div>
+            <form id="review-form" className={styles.formid}>
+                <label className={styles.labelid}>Comment:</label>
+                <textarea id="comment" name="comment" className={styles.textareaid}></textarea>
+
+                <label className={styles.labelid}>Rating:</label>
+                <div className={styles.starsContainer} value="rating">
+                    {renderStars()}
                 </div>
-                <div className={styles.pricesidecontainer}>
-                    <h2>Shop by Price</h2>
-                    <div className={styles.selectPrice}>
-                        <select className={styles.selectbar} onChange={handleSelectChange2} onClick={toggleArrow2}>
-                            <option value="all">All</option>
-                            <option value="20-50">20$ - 50$</option>
-                            <option value="50-150">50$ - 150$</option>
-                            <option value="150-350">150$ - 350$</option>
-                        </select>
-                        {arrowDirection2 === 'up' ? <SlArrowUp className={styles.arrow} /> : <SlArrowDown className={styles.arrow} />}
-                    </div>
+                <div className={styles.submitidcontainer}>
+                    <input type="submit" value="Submit Review" className={styles.submitid}/>
+                </div>
+            </form>
+            <div className={styles.commentsContainer}>
+                <div></div>
+            </div>
+
+            <div className={styles.blankhatcontainer}></div>
+            <ClothingHome />
+
+            <div>
+                <div>
+                    <Contact />
                 </div>
             </div>
-        
-            <div className={styles.hatscaffoldingcontainer}>
-                {hatsToDisplay.map(({ id, name, imageUrl, price, cartButton, favoriteButton }) => (
-                    <div key={id} className={styles.hatitemcontainer}
-                        onMouseOver={() => setShowButton(id)}
-                        onMouseOut={() => setShowButton(null)}>
-                        {showButton === id && <button className={styles.favoriteHatbutton} 
-                            onClick={() => handleAddToWish({ id, name, imageUrl, price })}>{favoriteButton}
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="#ff0000" stroke-linecap="round" stroke-linejoin="round">
-                                <title>Add To Favorites</title>
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                            </svg>
-                        </button>}
-                        <div style={{ textAlign: 'center' }}>
-                            <Link href="/collections/hats/[id]" as={`/collections/hats/${id}`}>
-                                <Image className={styles.hatimage}
-                                    src={imageUrl}
-                                    alt={name}
-                                    width="300" height="300"
-                                />
-                            </Link>
+
+            <div className={styles.blankhatcontainer}></div>
+            <div className={styles.productclaims}>
+                <div className={styles.pagewidth}>
+                    <div className={styles.productclaims2}>
+                        <div>
+                            <div className={styles.imagebx}>
+                                <Image src="https://cdn.shopify.com/s/files/1/0279/2649/5337/files/icon4.png?v=1625211833" alt="" width="50" height="50" />
+                            </div>
+
+                            <div>
+                                <h2>BUILT TO LAST</h2>
+                                <p>Our clothes are known for their strength and durability, striking a superb balance between functionality and style.</p>
+                            </div>
                         </div>
-                        {showButton === id && <button className={styles.cartHatButton}
-                            onClick={() => handleAddToCart({ id, name, imageUrl, price })}>
-                            {cartButton}
-                        </button>}
-                        <h3 className={styles.hatname}>{name}</h3>
-                        <p className={styles.hatprice}>{price.toLocaleString('en-US', {
-                            style: 'currency',
-                            currency: 'USD',
-                        })}</p>
+
+                        <div>
+                            <div className={styles.imagebx}>
+                                <Image src="https://cdn.shopify.com/s/files/1/0279/2649/5337/files/icon3.png?v=1625211868" alt="" width="50" height="50" />
+                            </div>
+                            <div>
+                                <h2>TAILORED FIT</h2>
+                                <p>With 5-7 size options, we developed perfectly fitted jackets that suit any body type like a glove.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className={styles.imagebx}>
+                                <Image src="https://cdn.shopify.com/s/files/1/0279/2649/5337/files/teardrop.png?v=1625211986" alt="" width="50" height="50" />
+                            </div>
+                            <div>
+                                <h2>WATERPROOF</h2>
+                                <p>Even on the rainiest days, our waterproof formula will keep you dry!</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className={styles.imagebx}>
+                                <Image src="https://cdn.shopify.com/s/files/1/0279/2649/5337/files/icon2.png?v=1625212014" alt="" width="50" height="50" />
+                            </div>
+                            <div>
+                                <h2>DUST / MOISTURE RESISTANT</h2>
+                                <p>Wear it comfortably without fear of moisture or dust damaging it, a lesser-known benefit yet important.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className={styles.imagebx}>
+                                <Image src="https://cdn.shopify.com/s/files/1/0279/2649/5337/files/icon5.png?v=1625212039" alt="" width="50" height="50" />
+                            </div>
+                            <div>
+                                <h2>ALL-SEASONS WEAR</h2>
+                                <p>Complete your look with non-bulky, lightweight jackets that go with every outfit, no matter the season.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className={styles.imagebx}>
+                                <Image src="https://cdn.shopify.com/s/files/1/0279/2649/5337/files/icon1.png?v=1625212060" alt="" width="50" height="50" />
+                            </div>
+                            <div>
+                                <h2>HIGHEST QUALITY</h2>
+                                <p>Handmade from the highest quality materials, Romdale guarantees that you ll look and feel your best, day after day.</p>
+                            </div>
+                        </div>
                     </div>
-                ))}    
-            </div>
-       
-            <div className={styles.blankhatcontainer}>
-                <div className={styles.nextbuttoncontainer}>
-                    <button onClick={handleNextClick} className={styles.nextpagebutton}>Next</button>
-                    <p className={styles.paranextbutton}>page {currentPage + 1} of {numOfPages}</p>
                 </div>
             </div>
-            
+
             <footer className={styles.footer} >
                 <div className={styles.contactfooter}>
                     <h1 className={styles.h1footer}>CONTACT</h1>
@@ -288,10 +309,5 @@ function Hats() {
                 </div>
             </footer>
         </div>
-        </CartProvider>
-    )
-};
-
-
-export default Hats;
-
+    );
+}
