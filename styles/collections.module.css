@@ -779,6 +779,33 @@
     margin-left: 220px;
 }
 
+.pantscaffoldingcontainer {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 30px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    height: 1000px;
+    margin-left: 220px;
+}
+
+.pantitemcontainer {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+
 .hatitemcontainer {
     display: block;
     background-repeat: no-repeat;

@@ -174,17 +174,17 @@
   text-align: center;
   margin: 0;
   padding: 20px 0;
-  text-shadow: 2px 2px 5px rgb(0, 0, 1);
+  text-shadow: 4px 4px 4px #070707;
   letter-spacing: .05em;
 }
 
 
 .shopbutton {
-  font-size: 35px;
+  font-size: 40px;
   font-family: 'Great Vibes', cursive;
   text-align: center;
-  color: rgb(240, 240, 240);
-  text-shadow: 5px 5px 8px rgb(0, 0, 1);
+  color: rgb(255, 255, 255);
+  text-shadow: 4px 4px 4px #070707;
   letter-spacing: .05em;
   cursor: pointer;
 }
