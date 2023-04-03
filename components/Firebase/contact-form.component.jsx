@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { sendContactForm } from "../Firebase/contact-form";
-import styles from "../../../branded-products/styles/collections.module.css";
+import styles from "../../styles/collections.module.css";
 
 const Contact = () => {
     const [message, setMessage] = useState("");
