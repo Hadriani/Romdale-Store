@@ -71,7 +71,7 @@ function NikeBootsPage(props) {
                 <nav className={styles.nav}>
                     <div className={styles.logoicon}>
                         <Link className={styles.a} href="/">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-affiliate" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-affiliate" width="48" height="48" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M5.931 6.936l1.275 4.249m5.607 5.609l4.251 1.275" />
                                 <path d="M11.683 12.317l5.759 -5.759" />
@@ -106,7 +106,7 @@ function NikeBootsPage(props) {
                         <ul>
                             <il className={styles.searchicon}>
                                 <Link className={styles.a} href="/searchbar">
-                                    <svg className={styles.navicon} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg className={`${styles.navicon} icon icon-tabler icon-tabler-search`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <circle cx="10" cy="10" r="7" />
                                         <line x1="21" y1="21" x2="15" y2="15" />
@@ -115,7 +115,7 @@ function NikeBootsPage(props) {
                             </il>
                             <li>
                                 <Link className={styles.a} href="/users">
-                                    <svg className={styles.navicon} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg className={`${styles.navicon} icon icon-tabler icon-tabler-users`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <circle cx="9" cy="7" r="4" />
                                         <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
@@ -126,7 +126,7 @@ function NikeBootsPage(props) {
                             </li>
                             <li>
                                 <Link className={styles.a} href="/wishlist">
-                                    <svg className={styles.navicon} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg className={`${styles.navicon} icon icon-tabler icon-tabler-heart`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                                     </svg>
@@ -134,7 +134,7 @@ function NikeBootsPage(props) {
                             </li>
                             <li>
                                 <Link className={styles.a} href="/checkout">
-                                    <svg className={`${styles.navicon} ${styles.navcart}`} xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg className={`${styles.navicon} ${styles.navcart} icon icon-tabler icon-tabler-shopping-cart`} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <circle cx="6" cy="19" r="2" />
                                         <circle cx="17" cy="19" r="2" />
@@ -195,7 +195,7 @@ function NikeBootsPage(props) {
                         onMouseOut={() => setShowButton(null)}>
                         {showButton === id && <button className={styles.favoriteHatbutton}
                             onClick={() => handleAddToWish({ id, name, imageUrl, price })}>{favoriteButton}
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="#ff0000" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="100%" height="100%" viewBox="0 0 24 24" strokeWidth="2" stroke="#000000" fill="#ff0000" strokeLinecap="round" strokeLinejoin="round">
                                 <title>Add To Favorites</title>
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
