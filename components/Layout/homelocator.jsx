@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styles from '../../../branded-products/styles/collections.module.css'
+import styles from '../../styles/collections.module.css'
 
 const HomesHeader = () => {
     const router = useRouter();

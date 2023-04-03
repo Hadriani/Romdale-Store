@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../../../branded-products/styles/collections.module.css';
+import styles from '../../styles/collections.module.css';
 import SHOES_MAP from '../../shoes-data';
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
 

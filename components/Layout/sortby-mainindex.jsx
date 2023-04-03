@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../../../branded-products/styles/collections.module.css';
+import styles from '../../styles/collections.module.css';
 import HATS_MAP from '../../hats-data';
 import { SlArrowUp } from "react-icons/sl"
 import { SlArrowDown } from "react-icons/sl"
