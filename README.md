@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
-Full Stack E-Commerce Project, built with Next.js and React. Using React Contexts, Next.js features, Javascript new functions, CSS styling. Until now, you can navigate from homepage to Collections (hats, shoes + [id] - the dynamic page for each clothing item expanded detail: description + other), authentication form (users) + login/signup/logout functionality, checkout page/wishlist (without payment form yet). Is not optimized for mobile versions, is only desktop PC/laptop.
+Full Stack E-Commerce Project, built with Next.js and React. Using React Contexts, Next.js features, Javascript new functions, CSS styling. Until now, you can navigate from homepage to Collections (hats, shoes + [id] - the dynamic page for each clothing item expanded detail: description + other), authentication form (users) + login/signup/logout functionality, checkout page/wishlist (without payment form yet). Is not optimized for mobile versions, is only for desktop PC/laptop.
 
 ```bash
 npm run dev
