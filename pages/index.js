@@ -237,7 +237,7 @@ function Home() {
         <div className={styles.socialmediacontainer}>
             <h1 className={styles.socialmediah1}>Follow us on our social medias</h1>
           <div className={styles.buttons}>
-            <Link href="https://www.instagram.com">
+            <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
               <button className={styles.instagram}>
                 <Image src={InstagramIcon}
                   alt="Instagram Icon"
@@ -247,7 +247,7 @@ function Home() {
                 />
               </button>
             </Link>
-            <Link href="https://www.facebook.com">
+            <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <button className={styles.facebook}>
                 <Image src={FacebookIcon}
                   alt="Facebook Icon"
@@ -257,7 +257,7 @@ function Home() {
                 />
               </button>
             </Link>
-            <Link href="https://www.twitter.com">
+            <Link href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
               <button className={styles.twitter}>
                 <Image src={TwitterIcon}
                   alt="Twitter Icon"
@@ -267,7 +267,7 @@ function Home() {
                 />
               </button>
             </Link>
-            <Link href="https://www.youtube.com">
+            <Link href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
               <button className={styles.youtube}>
                 <Image src={YoutubeIcon}
                   alt="Youtube Icon"
@@ -277,7 +277,7 @@ function Home() {
                 />
               </button>
             </Link>
-            <Link href="https://www.tiktok.com">
+            <Link href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
               <button className={styles.tiktok}>
                 <Image src={TikTokIcon}
                   alt="TikTok Icon"
@@ -287,7 +287,7 @@ function Home() {
                 />
               </button>
             </Link>
-            <Link href="https://www.pinterest.com">
+            <Link href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
               <button className={styles.pinterest}>
                 <Image src={PinterestIcon}
                   alt="Pinterest Icon"
