@@ -16,9 +16,10 @@ function ClothingHome() {
 
     return (
         <div className={styles.clothingslider}>
+            <div className={styles.sliderContainer}>
                 {DUMMY_PRODUCTS_HOME.map(( item, index ) => (
                     <div className={styles.clothingitem} key={item.id} style={{
-                        display: (index >= currentIndex && index < currentIndex + 4) ? 'block' : 'none',
+                        display: (index === currentIndex) ? 'block' : 'none',
                     }} >
                         <h3 className={styles.titleitem}>{item.title}</h3>
                         <div style={{ textAlign: 'center' }}>
@@ -37,6 +38,7 @@ function ClothingHome() {
                         })}</p>
                     </div>
                 ))}
+            </div>
             <button className={`${styles.sliderbtn} ${styles.sliderbtnleft}`} onClick={handleLeftClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-big-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
