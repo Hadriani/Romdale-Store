@@ -60,6 +60,15 @@
     color: rgb(255, 255, 255);
 }
 
+.mobileMenuIcon {
+    display: none;
+    cursor: pointer;
+}
+
+.menusymbol {
+    color: white;
+}
+
 
 .lim {
     margin: 0 30px;
@@ -577,5 +586,79 @@
 
     to {
         transform: translateX(-800px);
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .logoicon {
+        padding-left: 5px;
+        margin-top: 5px;
+    }
+
+    .ulnav {
+        display: none;
+    }
+
+    .mobileMenuIcon {
+        display: block;
+        padding-top: 10px;
+        padding-left: 5px;
+        font-size: 25px;
+    }
+
+    .showDropdown {
+        display: block !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        background-color: #000000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        padding: 2px;
+        margin-top: -40px;
+        margin-left: -5px;
+    }
+
+    .showDropdown a {
+        display: block;
+        padding: 10px 15px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .showDropdown a:hover {
+        background-color: #040404;
+    }
+
+    .formcontainer {
+        display: flex;
+        flex-direction: column;
+        margin-left: -10px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .BaseButton {
+        margin-right: 10px;
+    }
+
+    .signupcontainer {
+        margin-right: 20px;
+    }
+
+    .wrapperfooter {
+        padding-top: 60px;
+        display: block;
+    }
+
+    .footer div {
+        display: none;
     }
 }

@@ -1,3 +1,22 @@
+.container {
+    padding: 0;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 5px 15px;
+    position: relative;
+    letter-spacing: .05em;
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+    box-sizing: inherit;
+}
+
 .navigationheader {
     display: flex;
     flex: 1;
@@ -20,6 +39,20 @@
 .nav {
     display: flex;
     justify-content: center;
+}
+.ulnav {
+    list-style: none;
+    display: flex;
+    color: rgb(255, 255, 255);
+}
+
+.mobileMenuIcon {
+    display: none;
+    cursor: pointer;
+}
+
+.menusymbol {
+    color: white;
 }
 
 .logoicon {
@@ -1218,5 +1251,141 @@
 
     to {
         transform: translateX(-800px);
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .logoicon {
+        padding-left: 5px;
+    }
+
+    .ulnav {
+        display: none;
+    }
+
+    .mobileMenuIcon {
+        display: block;
+        padding-top: 10px;
+        padding-left: 5px;
+        font-size: 25px;
+    }
+
+    .showDropdown {
+        display: block !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        background-color: #000000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        padding: 2px;
+        margin-top: -40px;
+        margin-left: -5px;
+    }
+
+    .showDropdown a {
+        display: block;
+        padding: 10px 15px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .showDropdown a:hover {
+        background-color: #040404;
+    }
+
+    .welcome {
+        font-size: 50px;
+    }
+
+    .shopbutton {
+        font-size: 30px;
+    }
+
+    .dotcontainer {
+        align-items: center;
+    }
+
+    .containerfull {
+        padding-bottom: 120px;
+    }
+
+    .clothingslider {
+        overflow: hidden;
+    }
+
+    .sliderContainer {
+        display: flex;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .clothingitem {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+    }
+
+    .specialholidaycontainer {
+        grid-template-columns: 1fr;
+    }
+
+    .giftcontainer {
+        height: 100%;
+        width: 100%;
+    }
+
+    .collectioncontainer {
+        left: 0px;
+
+    }
+
+    .custombuildcontainer {
+        width: 100%;
+    }
+
+    .custombuildbackground {
+        background-size: cover;
+    }
+
+    .galleryhomeslider {
+        display: flex;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .galleryhomeitem {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+    }
+
+    .imagegalleryhome {
+        justify-content: center;
+    }
+
+    .reviewcontainer {
+        padding-top: 60px;
+    }
+
+    .youtube .tiktok .pinterest {
+        padding-top: 50px;
+    }
+
+    .wrapperfooter {
+        display: block;
+    }
+    .wrapperfooter2 {
+        padding-top: 1800px;
+        display: block;
+    }
+
+    .footer div {
+        display: none;
     }
 }
