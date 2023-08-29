@@ -9,7 +9,6 @@ import styles from '../../styles/checkout-wishlist.module.css';
 import HomesHeader from '../../components/Layout/homelocator';
 import { Button } from 'semantic-ui-react';
 
-
 function calculateOrderTotal(cartTotal, shippingFee) {
     return cartTotal + shippingFee;
 }
@@ -19,6 +18,11 @@ function CheckOut() {
     const { cartItems, cartTotal } = useContext(CartContext);
     const { cartCount } = useContext(CartContext);
     const [showCartCount, setShowCartCount] = useState("");
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
 
     useEffect(() => {
         if (cartItems.length > 0) {
@@ -38,7 +42,7 @@ function CheckOut() {
     }, [cartCount]);
     
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.navigationheader}>
                 <nav className={styles.nav}>
                     <div className={styles.logoicon}>
@@ -54,7 +58,10 @@ function CheckOut() {
                             </svg>
                         </Link>
                     </div>
-                    <ul className={styles.ulnav}>
+                    <div className={`${styles.mobileMenuIcon} ${showMenu ? styles.showMobileMenu : ''}`} onClick={toggleMenu}>
+                        <span className={styles.menusymbol}>☰</span>
+                    </div>
+                    <ul className={`${styles.ulnav} ${showMenu ? styles.showDropdown : ''}`}>
                         <li className={styles.lim}>
                             <Link className={styles.a} href="/about">ABOUT</Link>
                         </li>

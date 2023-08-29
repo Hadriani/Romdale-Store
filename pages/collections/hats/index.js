@@ -27,6 +27,11 @@ function Hats() {
     const [showCartCount, setShowCartCount] = useState("");
     const [arrowDirection, setArrowDirection] = useState("up")
     const [arrowDirection2, setArrowDirection2] = useState("up")
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
     
     function handleSelectChange(event) {
         Router.push(`/collections/hats/${event.target.value}`)
@@ -85,7 +90,7 @@ function Hats() {
 
     return (
         <CartProvider>
-        <div>
+        <div className={styles.container}>
             <div className={styles.navigationheader}>
                 <nav className={styles.nav}>
                         <div className={styles.logoicon}>
@@ -101,7 +106,10 @@ function Hats() {
                                 </svg>
                             </Link>
                         </div>
-                        <ul className={styles.ulnav}>
+                        <div className={`${styles.mobileMenuIcon} ${showMenu ? styles.showMobileMenu : ''}`} onClick={toggleMenu}>
+                            <span className={styles.menusymbol}>☰</span>
+                        </div>
+                        <ul className={`${styles.ulnav} ${showMenu ? styles.showDropdown : ''}`}>
                             <li className={styles.lim}>
                                 <Link className={styles.a} href="/about">ABOUT</Link>
                             </li>
@@ -252,41 +260,43 @@ function Hats() {
                 </div>
             </div>
             
-            <footer className={styles.footer} >
-                <div className={styles.contactfooter}>
-                    <h1 className={styles.h1footer}>CONTACT</h1>
-                    <div className={styles.contactdetailsfooter}>
-                        <p>Email: info@romdale.com</p>
-                        <p>Address: 2869 W Bucharest</p>
-                    </div>
+                <div className={styles.wrapperfooter}>
+                    <footer className={styles.footer}>
+                        <div className={styles.contactfooter}>
+                            <h1 className={styles.h1footer}>CONTACT</h1>
+                            <div className={styles.contactdetailsfooter}>
+                                <p>Email: info@romdale.com</p>
+                                <p>Address: 2869 W Bucharest</p>
+                            </div>
+                        </div>
+                        <div className={styles.informationfooter}>
+                            <h2 className={styles.h2footer}>INFORMATION</h2>
+                            <div className={styles.infocontent}>
+                                <p>ABOUT US</p>
+                                <p>TERMS & CONDITIONS</p>
+                                <p>SHIPPING POLICY</p>
+                                <p>PRIVACY POLICY</p>
+                                <p>RETURN POLICY</p>
+                            </div>
+                        </div>
+                        <div className={styles.customerfooter}>
+                            <h3 className={styles.h3footer}>CUSTOMER SERVICE</h3>
+                            <div className={styles.customercontent}>
+                                <p>CONTACT US</p>
+                                <p>FAQ</p>
+                                <p>EMPLOYMENT</p>
+                                <p>ACCESSIBILITY STATEMENT</p>
+                            </div>
+                        </div>
+                        <div className={styles.newssignupfooter}>
+                            <h4 className={styles.h4footer}>NEWSLETTER SIGN UP</h4>
+                            <div className={styles.newssigncontent}>
+                                <p>Sign up for exclusive updates, new arrivals &</p>
+                                <p>insider only discounts</p>
+                            </div>
+                        </div>
+                    </footer>
                 </div>
-                <div className={styles.informationfooter}>
-                    <h2 className={styles.h2footer}>INFORMATION</h2>
-                    <div className={styles.infocontent}>
-                        <p>ABOUT US</p>
-                        <p>TERMS & CONDITIONS</p>
-                        <p>SHIPPING POLICY</p>
-                        <p>PRIVACY POLICY</p>
-                        <p>RETURN POLICY</p>
-                    </div>
-                </div>
-                <div className={styles.customerfooter}>
-                    <h3 className={styles.h3footer}>CUSTOMER SERVICE</h3>
-                    <div className={styles.customercontent}>
-                        <p>CONTACT US</p>
-                        <p>FAQ</p>
-                        <p>EMPLOYMENT</p>
-                        <p>ACCESSIBILITY STATEMENT</p>
-                    </div>
-                </div>
-                <div className={styles.newssignupfooter}>
-                    <h4 className={styles.h4footer}>NEWSLETTER SIGN UP</h4>
-                    <div className={styles.newssigncontent}>
-                        <p>Sign up for exclusive updates, new arrivals &</p>
-                        <p>insider only discounts</p>
-                    </div>
-                </div>
-            </footer>
         </div>
         </CartProvider>
     )
