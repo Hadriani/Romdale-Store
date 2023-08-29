@@ -8,6 +8,7 @@
     "@heroicons/react": "^2.0.13",
     "@iconify/icons-heroicons-outline": "^1.2.5",
     "@iconify/react": "^4.0.1",
+    "@stripe/react-stripe-js": "^2.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -27,7 +28,7 @@
     "reactstrap": "^9.1.5",
     "semantic-ui-react": "^2.1.4",
     "sharp": "^0.31.3",
-    "stripe": "^11.11.0",
+    "stripe": "^11.18.0",
     "svg-inline-loader": "^0.8.2",
     "web-vitals": "^2.1.4",
     "webpack": "^5.75.0"
