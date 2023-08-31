@@ -233,24 +233,10 @@
   box-shadow: 20px 10px 20px rgba(0.5, 0.5, 0.5, 0.5);
 }
 
-.sliderContainer {
-  display: flex;
-  /* Display the container as a flex container */
-  scroll-snap-type: x mandatory;
-  /* Enable snap scrolling on each item */
-  -webkit-overflow-scrolling: touch;
-  /* Enable smooth scrolling on iOS */
-
-}
-
 
 .clothingitem {
   margin-top: 20px;
   display: inline-block;
-  flex: 0 0 100%;
-    /* Set each item to take up full width of container */
-  scroll-snap-align: start;
-    /* Snap each item to the start of the container */
   width: 25%;
   height: 400px;
   margin-right: 20px;
@@ -987,13 +973,17 @@
 
   .sliderContainer {
     display: flex;
+    max-width: 100%;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
   
   .clothingitem {
-    flex: 0 0 100%;
+    flex: 0 0 50%;
     scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .specialholidaycontainer {
@@ -1020,6 +1010,7 @@
 
   .galleryhomeslider {
     display: flex;
+    max-width: 100%;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
@@ -1027,6 +1018,9 @@
   .galleryhomeitem {
     flex: 0 0 100%;
     scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .imagegalleryhome {
     justify-content: center;

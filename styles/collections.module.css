@@ -954,6 +954,16 @@
     height: 100px;
 }
 
+.blankhatcontainer2 {
+    width: 100%;
+    height: 100px;
+}
+
+.blankhatcontainer3 {
+    width: 100%;
+    height: 100px;
+}
+
 .nextbuttoncontainer {
     display: grid;
     grid-template-rows: auto;
@@ -1379,6 +1389,7 @@
 
     .wrapperfooter {
         display: block;
+        padding-top: 120px;
     }
     .wrapperfooter2 {
         padding-top: 1800px;
@@ -1388,4 +1399,81 @@
     .footer div {
         display: none;
     }
+
+    .sidebar {
+        width: 30%;
+        height: 130px;
+    }
+    .sidebar h2 {
+        font-size: 15px;
+    }
+    .toolbar {
+        width: 80%;
+        margin-left: 70px;
+    }
+   
+    .paragraphsorted {
+        font-size: 12px;
+    }
+    .headertoolbar {
+        margin-right: 80px;
+    }
+    .collectionssmallheader {
+        margin-right: 30px;
+    }
+    .blankhatcontainer {
+        padding-right: 180px;
+        padding-top: 2500px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    .blankhatcontainer2 {
+        padding-right: 180px;
+        padding-top: 2900px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    .blankhatcontainer3 {
+        padding-right: 180px;
+        padding-top: 2600px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    
+    .hatscaffoldingcontainer {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    .hatitemcontainer {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .cartHatButton {
+        padding-bottom: 10px;
+    }
+    .paranextbutton {
+        font-size: 12px;
+    }
+
+    .pantscaffoldingcontainer {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    .pantitemcontainer {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+
 }

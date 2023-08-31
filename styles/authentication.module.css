@@ -640,7 +640,11 @@
     .formcontainer {
         display: flex;
         flex-direction: column;
-        margin-left: -10px;
+        max-width: 430px;
+        min-width: 350px;
+        justify-content: center;
+        align-items: center;
+        margin-left: -0.5px;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
     }
@@ -649,8 +653,13 @@
         margin-right: 10px;
     }
 
+    .signincontainer {
+        width: 90%;
+    }
+
     .signupcontainer {
         margin-right: 20px;
+        width: 90%;
     }
 
     .wrapperfooter {
