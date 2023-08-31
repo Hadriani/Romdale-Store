@@ -16,29 +16,27 @@ function ClothingHome() {
 
     return (
         <div className={styles.clothingslider}>
-            <div className={styles.sliderContainer}>
-                {DUMMY_PRODUCTS_HOME.map(( item, index ) => (
-                    <div className={styles.clothingitem} key={item.id} style={{
-                        display: (index === currentIndex) ? 'block' : 'none',
-                    }} >
-                        <h3 className={styles.titleitem}>{item.title}</h3>
-                        <div style={{ textAlign: 'center' }}>
-                            <Link href="/collections">
-                                <Image className={styles.imagecontainer} 
-                                src={item.image} 
-                                alt={item.title} 
-                                width="256" height="256" 
-                                />
-                            </Link>
-                        </div>
-                        <p className={styles.descriptionitem}>{item.description}</p>
-                        <p className={styles.priceitem}>Price: {item.price.toLocaleString('en-US', {
-                            style: 'currency',
-                            currency: 'USD',
-                        })}</p>
+            {DUMMY_PRODUCTS_HOME.map((item, index) => (
+                <div className={styles.clothingitem} key={item.id} style={{
+                    display: (index >= currentIndex && index < currentIndex + 4) ? 'block' : 'none',
+                }} >
+                    <h3 className={styles.titleitem}>{item.title}</h3>
+                    <div style={{ textAlign: 'center' }}>
+                        <Link href="/collections">
+                            <Image className={styles.imagecontainer}
+                                src={item.image}
+                                alt={item.title}
+                                width="256" height="256"
+                            />
+                        </Link>
                     </div>
-                ))}
-            </div>
+                    <p className={styles.descriptionitem}>{item.description}</p>
+                    <p className={styles.priceitem}>Price: {item.price.toLocaleString('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                    })}</p>
+                </div>
+            ))}
             <button className={`${styles.sliderbtn} ${styles.sliderbtnleft}`} onClick={handleLeftClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-big-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#000000" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />

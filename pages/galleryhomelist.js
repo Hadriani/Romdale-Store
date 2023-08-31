@@ -18,7 +18,7 @@ function GalleryHome () {
         <div className={styles.galleryhomeslider}>
             {GALLERY_HOME.map(( item, index ) => (
                 <div className={styles.galleryhomeitem} key={item.id} style={{
-                    display: (index >= currentIndex && index < currentIndex + 1) ? 'block' : 'none',
+                    display: (index >= currentIndex && index < currentIndex + 4) ? 'block' : 'none',
                 }} >
                     <h2 className={styles.gallerynamehome}>{item.name}</h2>
                     <div style={{ textAlign: 'center'}}>
