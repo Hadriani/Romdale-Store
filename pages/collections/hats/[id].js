@@ -31,6 +31,11 @@ export default function Hat({ item }) {
     const { cartCount } = useContext(CartContext);
     const [showCartCount, setShowCartCount] = useState("");
     const [rating, setRating] = useState(0);
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
 
     const handleStarClick = (e) => {
         const selectedRating = e.target.dataset.index;
@@ -84,7 +89,10 @@ export default function Hat({ item }) {
                             </svg>
                         </Link>
                     </div>
-                    <ul className={styles.ulnav}>
+                    <div className={`${styles.mobileMenuIcon} ${showMenu ? styles.showMobileMenu : ''}`} onClick={toggleMenu}>
+                        <span className={styles.menusymbol}>☰</span>
+                    </div>
+                    <ul className={`${styles.ulnav} ${showMenu ? styles.showDropdown : ''}`}>
                         <li className={styles.lim}>
                             <Link className={styles.a} href="/about">ABOUT</Link>
                         </li>
@@ -179,7 +187,7 @@ export default function Hat({ item }) {
                 </div>
             </div>
 
-            <div className={styles.blankhatcontainer}></div>
+            <div className={styles.blankidcontainer}></div>
             <form id="review-form" className={styles.formid}>
                 <label className={styles.labelid}>Comment:</label>
                 <textarea id="comment" name="comment" className={styles.textareaid}></textarea>
@@ -192,11 +200,9 @@ export default function Hat({ item }) {
                     <input type="submit" value="Submit Review" className={styles.submitid}/>
                 </div>
             </form>
-            <div className={styles.commentsContainer}>
-                <div></div>
-            </div>
+            
 
-            <div className={styles.blankhatcontainer}></div>
+            <div className={styles.blankidcontainer}></div>
             <ClothingHome />
 
             <div>
@@ -205,7 +211,7 @@ export default function Hat({ item }) {
                 </div>
             </div>
 
-            <div className={styles.blankhatcontainer}></div>
+            <div className={styles.blankidcontainer}></div>
             <div className={styles.productclaims}>
                 <div className={styles.pagewidth}>
                     <div className={styles.productclaims2}>
@@ -273,41 +279,43 @@ export default function Hat({ item }) {
                 </div>
             </div>
 
-            <footer className={styles.footer} >
-                <div className={styles.contactfooter}>
-                    <h1 className={styles.h1footer}>CONTACT</h1>
-                    <div className={styles.contactdetailsfooter}>
-                        <p>Email: info@romdale.com</p>
-                        <p>Address: 2869 W Bucharest</p>
+            <div className={styles.wrapperfooter}>
+                <footer className={styles.footer}>
+                    <div className={styles.contactfooter}>
+                        <h1 className={styles.h1footer}>CONTACT</h1>
+                        <div className={styles.contactdetailsfooter}>
+                            <p>Email: info@romdale.com</p>
+                            <p>Address: 2869 W Bucharest</p>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.informationfooter}>
-                    <h2 className={styles.h2footer}>INFORMATION</h2>
-                    <div className={styles.infocontent}>
-                        <p>ABOUT US</p>
-                        <p>TERMS & CONDITIONS</p>
-                        <p>SHIPPING POLICY</p>
-                        <p>PRIVACY POLICY</p>
-                        <p>RETURN POLICY</p>
+                    <div className={styles.informationfooter}>
+                        <h2 className={styles.h2footer}>INFORMATION</h2>
+                        <div className={styles.infocontent}>
+                            <p>ABOUT US</p>
+                            <p>TERMS & CONDITIONS</p>
+                            <p>SHIPPING POLICY</p>
+                            <p>PRIVACY POLICY</p>
+                            <p>RETURN POLICY</p>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.customerfooter}>
-                    <h3 className={styles.h3footer}>CUSTOMER SERVICE</h3>
-                    <div className={styles.customercontent}>
-                        <p>CONTACT US</p>
-                        <p>FAQ</p>
-                        <p>EMPLOYMENT</p>
-                        <p>ACCESSIBILITY STATEMENT</p>
+                    <div className={styles.customerfooter}>
+                        <h3 className={styles.h3footer}>CUSTOMER SERVICE</h3>
+                        <div className={styles.customercontent}>
+                            <p>CONTACT US</p>
+                            <p>FAQ</p>
+                            <p>EMPLOYMENT</p>
+                            <p>ACCESSIBILITY STATEMENT</p>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.newssignupfooter}>
-                    <h4 className={styles.h4footer}>NEWSLETTER SIGN UP</h4>
-                    <div className={styles.newssigncontent}>
-                        <p>Sign up for exclusive updates, new arrivals &</p>
-                        <p>insider only discounts</p>
+                    <div className={styles.newssignupfooter}>
+                        <h4 className={styles.h4footer}>NEWSLETTER SIGN UP</h4>
+                        <div className={styles.newssigncontent}>
+                            <p>Sign up for exclusive updates, new arrivals &</p>
+                            <p>insider only discounts</p>
+                        </div>
                     </div>
-                </div>
-            </footer>
+                </footer>
+            </div>
         </div>
     );
 }

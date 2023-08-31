@@ -199,42 +199,28 @@ function Pants() {
                 <CollectionsHeader />
                 <div className={styles.searchhatcontainer2}>
                     <h1 className={styles.headertoolbar}>BOTTOMWEAR</h1>
-                    <span className={styles.toolbar}>
-                        <SortMainShoes onSort={handleSort} />
-                    </span>
+                    <p className={styles.headertoolbar}>Not finished.</p>
                 </div>
 
                 <div className={styles.sidebar}>
-                    <h2>Shop by Brand</h2>
+                    <h2></h2>
                     <div className={styles.selectContainer}>
-                        <select className={styles.selectbar} onChange={handleSelectChange} onClick={toggleArrow}>
-                            <option value="all">All</option>
-                            <option value="nikeairmax">Nike Air Max</option>
-                            <option value="jordan">Jordan</option>
-                            <option value="nikeboots">C&J Nike Boots</option>
-                            <option value="annafield">Anna Field</option>
-                            <option value="nikezoom">Nike Zoom</option>
-                        </select>
-                        {arrowDirection === 'up' ? <SlArrowUp className={styles.arrow} /> : <SlArrowDown className={styles.arrow} />}
+                        
+                        
                     </div>
                     <div className={styles.pricesidecontainer}>
-                        <h2>Shop by Price</h2>
+                        <h2></h2>
                         <div className={styles.selectPrice}>
-                            <select className={styles.selectbar} onChange={handleSelectChange2} onClick={toggleArrow2}>
-                                <option value="all">All</option>
-                                <option value="20-100">20$ - 100$</option>
-                                <option value="100-150">100$ - 150$</option>
-                                <option value="150-250">150$ - 250$</option>
-                            </select>
-                            {arrowDirection2 === 'up' ? <SlArrowUp className={styles.arrow} /> : <SlArrowDown className={styles.arrow} />}
+                            
+                            
                         </div>
                     </div>
                 </div>
 
 
-                <div className={styles.pantscaffoldingcontainer}>
+                <div className={styles.hatscaffoldingcontainer}>
                     {pantsToDisplay.map(({ id, name, imageUrl, price, cartButton, favoriteButton }) => (
-                        <div key={id} className={styles.pantitemcontainer}
+                        <div key={id} className={styles.hatitemcontainer}
                             onMouseOver={() => setShowButton(id)}
                             onMouseOut={() => setShowButton(null)}>
                             {showButton === id && <button className={styles.favoriteHatbutton}
