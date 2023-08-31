@@ -540,6 +540,8 @@
     background-size: cover;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .headertextid {
@@ -653,6 +655,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: none;
+}
+.blankidcontainer {
+    padding-top: 20px;
 }
 
 .inputid[type="number"] {
@@ -960,6 +965,22 @@
 }
 
 .blankhatcontainer3 {
+    width: 100%;
+    height: 100px;
+}
+.blankhatcontainer4 {
+    width: 100%;
+    height: 100px;
+}
+.blankhatcontainer5 {
+    width: 100%;
+    height: 100px;
+}
+.blankhatcontainer6 {
+    width: 100%;
+    height: 100px;
+}
+.blankhatcontainer7 {
     width: 100%;
     height: 100px;
 }
@@ -1395,6 +1416,30 @@
         padding-top: 1800px;
         display: block;
     }
+    .wrapperfooter3 {
+        display: block;
+        padding-top: 1300px;
+    }
+    .wrapperfooter4 {
+        display: block;
+        padding-top: 1800px;
+    }
+    .wrapperfooter5 {
+        display: block;
+        padding-top: 100px;
+    }
+    .wrapperfooter6 {
+        display: block;
+        padding-top: 400px;
+    }
+    .wrapperfooter7 {
+        display: block;
+        padding-top: 2000px;
+    }
+    .wrapperfooter8 {
+        display: block;
+        padding-top: 2600px;
+    }
 
     .footer div {
         display: none;
@@ -1442,6 +1487,34 @@
         min-width: 350px;
         margin: 0 auto;
     }
+    .blankhatcontainer4 {
+        padding-right: 180px;
+        padding-top: 200px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    .blankhatcontainer5 {
+        padding-right: 180px;
+        padding-top: 400px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    .blankhatcontainer6 {
+        padding-right: 180px;
+        padding-top: 1500px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
+    .blankhatcontainer7 {
+        padding-right: 180px;
+        padding-top: 1500px;
+        max-width: 430px;
+        min-width: 350px;
+        margin: 0 auto;
+    }
     
     .hatscaffoldingcontainer {
         display: grid;
@@ -1473,6 +1546,33 @@
     .pantitemcontainer {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+    .headercaps {
+        padding-right: 30px;
+    }
+
+    .idcontent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .headeritem {
+        padding-left: 50px;
+    }
+    .imagedetail {
+        padding-left: 10px;
+    }
+    .submitid {
+        font-size: 10px;
+    }
+    .productclaims {
+        display: flex;
+        flex-direction: column;
+    }
+    .productclaims2 {
+        display: flex;
+        flex-direction: column;
     }
 
 
