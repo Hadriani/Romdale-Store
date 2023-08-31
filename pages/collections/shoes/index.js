@@ -268,7 +268,7 @@ function Shoes() {
                     ))}
                 </div>
 
-                <div className={styles.blankhatcontainer}>
+                <div className={styles.blankhatcontainer2}>
                     <div className={styles.nextbuttoncontainer}>
                         <button onClick={handleNextClick} className={styles.nextpagebutton}>Next</button>
                         <p className={styles.paranextbutton}>page {currentPage + 1} of {numOfPages}</p>

@@ -68,7 +68,7 @@ export default function Hat({ item }) {
     }, [cartCount]);
 
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.navigationheader}>
                 <nav className={styles.nav}>
                     <div className={styles.logoicon}>
