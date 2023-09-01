@@ -1,5 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../../components/Contexts/cart.context';
+import { Elements } from '@stripe/react-stripe-js';
+import { stripePromise } from '../../utils/stripe';
 
 import React from "react";
 import Link from "next/link";
@@ -8,16 +10,18 @@ import CheckoutItem from "../../components/Layout/checkout-item.component";
 import styles from '../../styles/checkout-wishlist.module.css';
 import HomesHeader from '../../components/Layout/homelocator';
 import { Button } from 'semantic-ui-react';
+import { PaymentFormComponent } from '../../components/Stripe/payment.form';
 
 function calculateOrderTotal(cartTotal, shippingFee) {
     return cartTotal + shippingFee;
 }
 
 function CheckOut() {
-    const [orderTotal, setOrderTotal] = useState(0);
     const { cartItems, cartTotal } = useContext(CartContext);
     const { cartCount } = useContext(CartContext);
     const [showCartCount, setShowCartCount] = useState("");
+    const [orderTotal, setOrderTotal] = useState(0);
+    const [currentUser, setCurrentUser] = useState(null);
     const [showMenu, setShowMenu] = useState(false);
 
     const toggleMenu = () => {
@@ -35,11 +39,12 @@ function CheckOut() {
 
     useEffect(() => {
         if (cartCount > 0) {
-            setShowCartCount(cartCount); // update state with cartCount
+            setShowCartCount(cartCount); 
         } else {
-            setShowCartCount(""); // reset state to empty string
+            setShowCartCount(""); 
         }
     }, [cartCount]);
+
     
     return (
         <div className={styles.container}>
@@ -165,39 +170,43 @@ function CheckOut() {
                     <span className={styles.totalcheckout}></span>}
                 </div>
 
+                {cartItems.length > 0 &&
+                    <div className={styles.ordertotalamount}>
+                        <div className={styles.ordertotalsubdata}>
+                            {cartItems.length > 0 &&
+                                <div className={styles.subtotal}>
+                                    <p>subtotal:</p>
+                                    <p key={cartItems.id} cartItem={cartItems}>price: ${cartTotal}</p>
+                                </div>}
+
+                            {cartItems.length > 0 &&
+                                <div className={styles.shippingfee}>
+                                    <p>Shipping Fee: </p>
+                                    <p>price: $5</p>
+                                </div>
+                            }
+
+                            {cartItems.length > 0 &&
+                                <hr className={styles.hr} />}
+
+                            {cartItems.length > 0 &&
+                                <div className={styles.ordertotal}>
+                                    <p>Order Total: </p>
+                                    <p>Total:  ${orderTotal}</p>
+                                </div>
+                            }
+                        </div>
+                    </div>}
+                    
+                <Elements stripe={stripePromise}>
+                    <PaymentFormComponent currentUser={currentUser} orderTotal={orderTotal} />
+                </Elements>
+
                 <div className={styles.buttoncollections}>
                     <Link href="/preview/preview">
                         <Button className={styles.movetocollections}>Continue Shopping</Button>
                     </Link>
                 </div>
-                
-                {cartItems.length > 0 &&
-                <div className={styles.ordertotalamount}>
-                    <div className={styles.ordertotalsubdata}>
-                        {cartItems.length > 0 &&
-                        <div className={styles.subtotal}>
-                            <p>subtotal:</p>
-                            <p key={cartItems.id} cartItem={cartItems}>price: ${cartTotal}</p>
-                        </div>}
-
-                        {cartItems.length > 0 &&
-                        <div className={styles.shippingfee}>
-                            <p>Shipping Fee: </p>
-                            <p>price: $5</p>
-                        </div>
-                        }
-
-                        {cartItems.length > 0 &&
-                        <hr className={styles.hr}/>}
-
-                        {cartItems.length > 0 &&
-                        <div className={styles.ordertotal}>
-                            <p>Order Total: </p>
-                            <p>Total:  ${orderTotal}</p>
-                        </div>
-                        }
-                    </div>
-                </div>}
             </div>
 
             <footer className={styles.footer} >
