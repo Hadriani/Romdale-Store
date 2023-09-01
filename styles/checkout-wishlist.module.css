@@ -340,7 +340,7 @@
 }
 
 .buttoncollections {
-    padding-left: 25px;
+    margin-bottom: 30px;
 }
 
 .movetocollections {
@@ -431,7 +431,6 @@
 }
 
 .totalcheckout {
-    margin-top: 30px;
     margin-right: auto;
     font-size: 22px;
 }
@@ -456,16 +455,54 @@
     cursor: pointer;
 }
 
+.PaymentFormContainerr {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 80px;
+}
+.FormContainerr {
+    height: 100px;
+    min-width: 500px;
+    padding-bottom: 80px;
+}
+.CardHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 30px;
+    padding-left: 140px;
+}
+.StyledCardElement {
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    font-size: 16px;
+    color: #444;
+    letter-spacing: 0.025em;
+}
+.PaymentButton {
+    margin-left: auto;
+    margin-top: 30px;
+    background-color: white;
+    color: #000000;
+}
+
 
 .ordertotalamount {
     width: 100%;
-    margin: 4.8rem 0 0 0;
+    margin: 1.4rem 0 0 0;
     text-transform: capitalize;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
 }
 
 .ordertotalsubdata {
@@ -479,13 +516,11 @@
 
 .ordertotalsubdata > div {
     display: flex;
-    gap: 3.2rem;
+    gap: 2.6rem;
     justify-content: space-between;
+    height: 60px;
 }
 
-/*.ordertotalsubdata > div:last-child {
-    background-color: #fafafa;
-}*/
 
 .ordertotalsubdata> div p:last-child {
     font-weight: bold;
@@ -502,6 +537,10 @@
 
 .ordertotal {
     margin-top: -80px;
+}
+
+.buttcontainer {
+    margin-top: 20px;
 }
 
 .footer {
@@ -725,6 +764,12 @@
 .logo {
     height: 1em;
     margin-left: 0.5rem;
+}
+
+.ErrorMessage {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 8px;
 }
 
 @media (max-width: 600px) {
@@ -967,5 +1012,29 @@
 
     .footer div {
         display: none;
+    }
+
+    .PaymentFormContainerr {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+    .FormContainerr {
+        display: flex;
+        flex-direction: column;
+    }
+    .PaymentButton {
+        padding-right: 100px;
+    }
+    .CardHeader {
+        padding-right: 100px;
+        font-size: 25px;
+    }
+    .StyledCardElement {
+        width: 90%;
+        padding-left: 150px;
+    }
+    .buttoncollections {
+        padding-left: 15px;
     }
 }
